@@ -42,7 +42,7 @@ housing = load_housing_data
 train_set, test_set = train_test_split(housing, test_size=0.2, random_state=42)
 
 housing["income_cat"] = pd.cut(
-    housing["median_income"], bins=[0.0, 1.5, 3.0, 4.5, 6.0, np.inf], labels=[1, 2, 3, 4, 5]  # noqa
+    housing["median_income"], bins=[0.0, 1.5, 3.0, 4.5, 6.0, np.inf], labels=[1, 2, 3, 4, 5]  
 )
 
 split = StratifiedShuffleSplit(n_splits=1, test_size=0.2, random_state=42)
@@ -64,8 +64,8 @@ compare_props = pd.DataFrame(
         "Random": income_cat_proportions(test_set),
     }
 ).sort_index()
-compare_props["Rand. %error"] = 100 * compare_props["Random"] / compare_props["Overall"] - 100  # noqa
-compare_props["Strat. %error"] = 100 * compare_props["Stratified"] / compare_props["Overall"] - 100  # noqa
+compare_props["Rand. %error"] = 100 * compare_props["Random"] / compare_props["Overall"] - 100  
+compare_props["Strat. %error"] = 100 * compare_props["Stratified"] / compare_props["Overall"] - 100 
 
 for set_ in (strat_train_set, strat_test_set):
     set_.drop("income_cat", axis=1, inplace=True)
@@ -77,8 +77,8 @@ housing.plot(kind="scatter", x="longitude", y="latitude", alpha=0.1)
 corr_matrix = housing.corr()
 corr_matrix["median_house_value"].sort_values(ascending=False)
 housing["rooms_per_household"] = housing["total_rooms"] / housing["households"]
-housing["bedrooms_per_room"] = housing["total_bedrooms"] / housing["total_rooms"]  # noqa
-housing["population_per_household"] = housing["population"] / housing["households"]  # noqa
+housing["bedrooms_per_room"] = housing["total_bedrooms"] / housing["total_rooms"] 
+housing["population_per_household"] = housing["population"] / housing["households"]  
 
 housing = strat_train_set.drop("median_house_value", axis=1)
 housing_labels = strat_train_set["median_house_value"].copy()
@@ -92,12 +92,43 @@ imputer.fit(housing_num)
 X = imputer.transform(housing_num)
 
 housing_tr = pd.DataFrame(X, columns=housing_num.columns, index=housing.index)
-housing_tr["rooms_per_household"] = housing_tr["total_rooms"] / housing_tr["households"]  # noqa
-housing_tr["bedrooms_per_room"] = housing_tr["total_bedrooms"] / housing_tr["total_rooms"]  # noqa
-housing_tr["population_per_household"] = housing_tr["population"] / housing_tr["households"]  # noqa
+housing_tr["rooms_per_household"] = housing_tr["total_rooms"] / housing_tr["households"] 
+housing_tr["bedrooms_per_room"] = housing_tr["total_bedrooms"] / housing_tr["total_rooms"] 
+housing_tr["population_per_household"] = housing_tr["population"] / housing_tr["households"] 
 
 housing_cat = housing[["ocean_proximity"]]
-housing_prepared = housing_tr.join(pd.get_dummies(housing_cat, drop_first=True))  # noqa
+housing_prepared = housing_tr.join(pd.get_dummies(housing_cat, drop_first=True)) 
+
+
+from sklearn.base import BaseEstimator, TransformerMixin
+
+col_names = "total_rooms", "total_bedrooms", "population", "households"
+rooms_ix, bedrooms_ix, population_ix, households_ix = [
+    housing.columns.get_loc(c) for c in col_names]
+class CombinedAttributesAdder(BaseEstimator, TransformerMixin):
+    def __init__(self, add_bedrooms_per_room=True): # no *args or **kargs
+        self.add_bedrooms_per_room = add_bedrooms_per_room
+    def fit(self, X, y=None):
+        return self  # nothing else to do
+    def transform(self, X):
+        rooms_per_household = X[:, rooms_ix] / X[:, households_ix]
+        population_per_household = X[:, population_ix] / X[:, households_ix]
+        if self.add_bedrooms_per_room:
+            bedrooms_per_room = X[:, bedrooms_ix] / X[:, rooms_ix]
+            return np.c_[X, rooms_per_household, population_per_household,
+                         bedrooms_per_room]
+        else:
+            return np.c_[X, rooms_per_household, population_per_household]
+
+attr_adder = CombinedAttributesAdder(add_bedrooms_per_room=False)
+housing_extra_attribs = attr_adder.transform(housing.values)
+
+
+housing_extra_attribs = pd.DataFrame(
+    housing_extra_attribs,
+    columns=list(housing.columns)+["rooms_per_household", "population_per_household"],
+    index=housing.index)
+housing_extra_attribs.head()
 
 
 lin_reg = LinearRegression()
