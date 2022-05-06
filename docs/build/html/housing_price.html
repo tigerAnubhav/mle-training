@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>housing_price package &mdash; housing_price 0.3 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> housing_price
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">housing_price package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-housing_price.ingest_data">housing_price.ingest_data module</a></li>
+<li><a class="reference internal" href="#module-housing_price.logger">housing_price.logger module</a></li>
+<li><a class="reference internal" href="#module-housing_price.score">housing_price.score module</a></li>
+<li><a class="reference internal" href="#module-housing_price.train">housing_price.train module</a></li>
+<li><a class="reference internal" href="#module-housing_price">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">housing_price</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>housing_price package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/housing_price.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="housing-price-package">
+<h1>housing_price package<a class="headerlink" href="#housing-price-package" title="Permalink to this headline"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+</section>
+<section id="module-housing_price.ingest_data">
+<span id="housing-price-ingest-data-module"></span><h2>housing_price.ingest_data module<a class="headerlink" href="#module-housing_price.ingest_data" title="Permalink to this headline"></a></h2>
+<p>This module contains helper functions for ingestion of data.
+Running this standalone downloads the housing data and stores preprocessed copies of it in the specified folders.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="housing_price.ingest_data.fetch_housing_data">
+<span class="sig-prename descclassname"><span class="pre">housing_price.ingest_data.</span></span><span class="sig-name descname"><span class="pre">fetch_housing_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">housing_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">housing_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#housing_price.ingest_data.fetch_housing_data" title="Permalink to this definition"></a></dt>
+<dd><p>Function to download and extract housing data.</p>
+<dl class="simple">
+<dt>housing_url<span class="classifier">str</span></dt><dd><p>Url to download the housing data from.</p>
+</dd>
+<dt>housing_path<span class="classifier">str</span></dt><dd><p>Path to store the raw csv files after extraction.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="housing_price.ingest_data.parse_args">
+<span class="sig-prename descclassname"><span class="pre">housing_price.ingest_data.</span></span><span class="sig-name descname"><span class="pre">parse_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">argparse.Namespace</span></span></span><a class="headerlink" href="#housing_price.ingest_data.parse_args" title="Permalink to this definition"></a></dt>
+<dd><p>Commandline argument parser for standalone run.</p>
+<dl class="simple">
+<dt>arparse.Namespace</dt><dd><dl class="simple">
+<dt>Commandline arguments. Contains keys: [“raw”: str,</dt><dd><p>“processed”: str,
+“log_level”: str,
+“no_console_log”: bool,
+“log_path”: str]</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="housing_price.ingest_data.pre_process_data">
+<span class="sig-prename descclassname"><span class="pre">housing_price.ingest_data.</span></span><span class="sig-name descname"><span class="pre">pre_process_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imputer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">sklearn.impute._base.SimpleImputer</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sklearn.impute._base.SimpleImputer</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#housing_price.ingest_data.pre_process_data" title="Permalink to this definition"></a></dt>
+<dd><p>Preprocesses the given dataframe. Imputes missing values with median.
+Replaces categorical column “ocean_proximity” with onehot dummy variables.</p>
+<dl class="simple">
+<dt>df<span class="classifier">pd.DataFrame</span></dt><dd><p>Dataframe to preprocess.</p>
+</dd>
+<dt>imputer<span class="classifier">SimpleImputer, optional</span></dt><dd><p>Imputer that imputes missing values, by default None.
+If None, new imputer is created and fit to the given dataframe.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>tuple[pd.DataFrame, SimpleImputer]</dt><dd><p>Index 0 is the preprocessed dataframe.
+Index 1 is the SimpleImputer passed or fit on the dataframe if None is passed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="housing_price.ingest_data.run">
+<span class="sig-prename descclassname"><span class="pre">housing_price.ingest_data.</span></span><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">argparse.Namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">logging.Logger</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#housing_price.ingest_data.run" title="Permalink to this definition"></a></dt>
+<dd><p>Does all the ingesting work (fetching, splitting, preprocessing).
+Gets called if this module is run standalone.</p>
+<dl class="simple">
+<dt>args<span class="classifier">Namespace</span></dt><dd><p>Commandline arguments from parse_args.</p>
+</dd>
+<dt>logger<span class="classifier">Logger</span></dt><dd><p>Logger to log the state while running.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="housing_price.ingest_data.stratified_shuffle_split">
+<span class="sig-prename descclassname"><span class="pre">housing_price.ingest_data.</span></span><span class="sig-name descname"><span class="pre">stratified_shuffle_split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#housing_price.ingest_data.stratified_shuffle_split" title="Permalink to this definition"></a></dt>
+<dd><p>Does stratified shuffle split on “income_cat” attribute of housing data.</p>
+<dl class="simple">
+<dt>base_df<span class="classifier">pd.DataFrame</span></dt><dd><p>The dataframe to be split.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>tuple[pd.DataFrame, pd.DataFrame]</dt><dd><p>[train_dataset, test_dataset]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-housing_price.logger">
+<span id="housing-price-logger-module"></span><h2>housing_price.logger module<a class="headerlink" href="#module-housing_price.logger" title="Permalink to this headline"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="housing_price.logger.configure_logger">
+<span class="sig-prename descclassname"><span class="pre">housing_price.logger.</span></span><span class="sig-name descname"><span class="pre">configure_logger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cfg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">console</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DEBUG'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#housing_price.logger.configure_logger" title="Permalink to this definition"></a></dt>
+<dd><p>Function to setup configurations of logger through function.</p>
+<p>The individual arguments of <cite>log_file</cite>, <cite>console</cite>, <cite>log_level</cite> will overwrite the ones in cfg.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>logger:</dt><dd><p>Predefined logger object if present. If None a ew logger object will be created from root.</p>
+</dd>
+<dt>cfg: dict()</dt><dd><p>Configuration of the logging to be implemented by default</p>
+</dd>
+<dt>log_file: str</dt><dd><p>Path to the log file for logs to be stored</p>
+</dd>
+<dt>console: bool</dt><dd><p>To include a console handler(logs printing in console)</p>
+</dd>
+<dt>log_level: str</dt><dd><p>One of <cite>[“INFO”,”DEBUG”,”WARNING”,”ERROR”,”CRITICAL”]</cite>
+default - <cite>“DEBUG”</cite></p>
+</dd>
+</dl>
+</div></blockquote>
+<p>logging.Logger</p>
+</dd></dl>
+
+</section>
+<section id="module-housing_price.score">
+<span id="housing-price-score-module"></span><h2>housing_price.score module<a class="headerlink" href="#module-housing_price.score" title="Permalink to this headline"></a></h2>
+<p>This module contains helper functions to score the models.
+Can be run standalone with commandline arguments for models and the datasets to score them on.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="housing_price.score.load_data">
+<span class="sig-prename descclassname"><span class="pre">housing_price.score.</span></span><span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#housing_price.score.load_data" title="Permalink to this definition"></a></dt>
+<dd><p>Loads dataset and splits features and labels.</p>
+<dl class="simple">
+<dt>path<span class="classifier">str</span></dt><dd><p>Path to training dataset csv file.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>tuple[pd.DataFrame, pd.Series]</dt><dd><p>Index 0 is the testing features dataframe.
+Index 1 is the testing labels series.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="housing_price.score.load_models">
+<span class="sig-prename descclassname"><span class="pre">housing_price.score.</span></span><span class="sig-name descname"><span class="pre">load_models</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">sklearn.base.BaseEstimator</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#housing_price.score.load_models" title="Permalink to this definition"></a></dt>
+<dd><p>Loads models from given directory path.</p>
+<dl class="simple">
+<dt>path<span class="classifier">str</span></dt><dd><p>Path to directory with model pkl files.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>list[sklearn.base.BaseEstimator]</dt><dd><p>List of models loaded from pkl files in directory.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="housing_price.score.parse_args">
+<span class="sig-prename descclassname"><span class="pre">housing_price.score.</span></span><span class="sig-name descname"><span class="pre">parse_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">argparse.Namespace</span></span></span><a class="headerlink" href="#housing_price.score.parse_args" title="Permalink to this definition"></a></dt>
+<dd><p>Commandline argument parser for standalone run.</p>
+<dl class="simple">
+<dt>arparse.Namespace</dt><dd><dl class="simple">
+<dt>Commandline arguments. Contains keys: [“models”: str,</dt><dd><p>“dataset”: str,
+“rmse”: bool,
+“mae”: bool,
+“log_level”: str,
+“no_console_log”: bool,
+“log_path”: str]</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="housing_price.score.run">
+<span class="sig-prename descclassname"><span class="pre">housing_price.score.</span></span><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">argparse.Namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">logging.Logger</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#housing_price.score.run" title="Permalink to this definition"></a></dt>
+<dd><p>Runs the whole scoring process according to the given commandline arguments.</p>
+<dl class="simple">
+<dt>args<span class="classifier">Namespace</span></dt><dd><p>Commandline arguments from parse_args.</p>
+</dd>
+<dt>logger<span class="classifier">Logger</span></dt><dd><p>Logs the outputs.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="housing_price.score.score_model">
+<span class="sig-prename descclassname"><span class="pre">housing_price.score.</span></span><span class="sig-name descname"><span class="pre">score_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sklearn.base.BaseEstimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.series.Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">argparse.Namespace</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#housing_price.score.score_model" title="Permalink to this definition"></a></dt>
+<dd><p>Scores given model on given data.</p>
+<dl class="simple">
+<dt>model<span class="classifier">sklearn.base.BaseEstimator</span></dt><dd><p>Estimator to score.</p>
+</dd>
+<dt>X<span class="classifier">pd.DataFrame</span></dt><dd><p>Input features dataframe.</p>
+</dd>
+<dt>y<span class="classifier">pd.Series</span></dt><dd><p>Ground truth labels.</p>
+</dd>
+<dt>args<span class="classifier">Namespace</span></dt><dd><p>Command line arguments. Used to determine which scores to calculate.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>dict</dt><dd><p>Contains calculated scores.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-housing_price.train">
+<span id="housing-price-train-module"></span><h2>housing_price.train module<a class="headerlink" href="#module-housing_price.train" title="Permalink to this headline"></a></h2>
+<p>This module contains helper functions to train models.
+Can be run standalone with commandline arguments for dataset path and models directory.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="housing_price.train.load_data">
+<span class="sig-prename descclassname"><span class="pre">housing_price.train.</span></span><span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#housing_price.train.load_data" title="Permalink to this definition"></a></dt>
+<dd><p>Loads dataset and splits features and labels.</p>
+<dl class="simple">
+<dt>path<span class="classifier">str</span></dt><dd><p>Path to training dataset csv file.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>tuple[pd.DataFrame, pd.Series]</dt><dd><p>Index 0 is the training features dataframe.
+Index 1 is the training labels series.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="housing_price.train.parse_args">
+<span class="sig-prename descclassname"><span class="pre">housing_price.train.</span></span><span class="sig-name descname"><span class="pre">parse_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">argparse.Namespace</span></span></span><a class="headerlink" href="#housing_price.train.parse_args" title="Permalink to this definition"></a></dt>
+<dd><p>Commandline argument parser for standalone run.</p>
+<dl class="simple">
+<dt>arparse.Namespace</dt><dd><dl class="simple">
+<dt>Commandline arguments. Contains keys: [“models”: str,</dt><dd><p>“dataset”: str,
+“log_level”: str,
+“no_console_log”: bool,
+“log_path”: str]</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="housing_price.train.run">
+<span class="sig-prename descclassname"><span class="pre">housing_price.train.</span></span><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">argparse.Namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">logging.Logger</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#housing_price.train.run" title="Permalink to this definition"></a></dt>
+<dd><p>Runs the whole training process according to given commandline arguments.</p>
+<dl class="simple">
+<dt>args<span class="classifier">Namespace</span></dt><dd><p>Commandline arguments from parse_args.</p>
+</dd>
+<dt>logger<span class="classifier">Logger</span></dt><dd><p>Logs the outputs.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="housing_price.train.save_model">
+<span class="sig-prename descclassname"><span class="pre">housing_price.train.</span></span><span class="sig-name descname"><span class="pre">save_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sklearn.base.BaseEstimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#housing_price.train.save_model" title="Permalink to this definition"></a></dt>
+<dd><p>Saves the given model in given directory as pickle file.</p>
+<dl class="simple">
+<dt>model<span class="classifier">sklearn.base.BaseEstimator</span></dt><dd><p>Estimator to save.</p>
+</dd>
+<dt>dir<span class="classifier">str</span></dt><dd><p>Directory to save in.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>tuple[str, str]</dt><dd><p>Index 0 is the name of the model.
+Index 1 is the path it is saved in.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-housing_price">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-housing_price" title="Permalink to this headline"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Anubhav Yadav.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
